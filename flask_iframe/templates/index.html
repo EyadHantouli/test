@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert</title>
+</head>
+<body>
+    <!-- I'am Sorry For The Most Shitty Code In The World -->
+    <!-- There Is A lot Of Useless Code Lines I guess  -->
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background-color: #374954;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form .text {
+            width: 300px;
+            height: 50px;
+            padding: 0px 15px;
+            background-color: #4f6877;
+            border: 0px;
+            color: white;
+            font-size: 18px;
+            overflow: scroll;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        form .button {
+            background-color: #57a4ec;
+            border: 0;
+            font-size: 18px;
+            padding: 0px 15px;
+            height: 50px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            vertical-align: middle; /* To Center The Text Vertically And To Work You Need To Set The Line Height Same As Width */
+            line-height: 50px;
+        }
+
+        form .py {
+            background-color: #57a4ec;
+            color: white;
+            height: 50px;
+            padding: 0px 15px;
+            font-size: 18px;
+            vertical-align: middle;
+            line-height: 50px;
+            border: 0;
+            }
+
+        input::placeholder {
+            color: white;
+            opacity: 50%;
+        }
+
+        #result {
+            height: 300px;
+            max-width: 300px;
+            overflow-y: scroll;
+            color: #6bbe92;
+            margin: 30px 0;
+            border: 1px solid gray;
+            padding: 15px;
+            background: transparent;
+            font-size: 16px;
+            font-family: revert;
+            line-height: 20px;
+        }
+
+        /* For The Fold */
+        @media (max-width: 310px) { 
+            form .text {
+                width: 200px;
+            }
+
+            form .button { 
+                width: 200px;
+            }
+
+            form .py { 
+                width: 200px;
+            }
+        }
+    </style>
+    <div class="container">
+        <form method="post">
+            <input class="text" type="text" placeholder="Youtube Video Link..." name="myInput" autocomplete="off">
+            <textarea id="result">{{ new_input }}</textarea>
+            <input class="button" type="submit" value="Submit"></input>
+            <div class="button" onclick="myFunction()">Copy the result</div>
+        </form>
+    </div>
+    <script>
+        function myFunction() {
+            var copyText = document.getElementById("result");
+            copyText.select();
+            document.execCommand("copy");
+            copyText.setSelectionRange(0, 99999); /*This For Mobile Devices IDK*/
+            navigator.clipboard.writeText(copyText.value);
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+</body>
+</html>
